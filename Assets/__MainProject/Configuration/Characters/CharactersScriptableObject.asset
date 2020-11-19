@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f81dd3baef15dc54888bdbf12c35be7c, type: 3}
+  m_Name: CharactersScriptableObject
+  m_EditorClassIdentifier: 
+  Characters:
+  - NameEnglish: "\u0645\u0639\u064A\u0646"
+    NamePersian: Moeen
+    Face: {fileID: 2800000, guid: 4b6ce6880af666448a8184102908d2fb, type: 3}
+    FaceColor: {r: 0, g: 0, b: 0, a: 0}
+    Clothing: {fileID: 2800000, guid: 3213748176e31af4f84491aafd8fae7b, type: 3}
+    Eye: {fileID: 2800000, guid: 095e65cfaf1926c41b6d5bc74054882e, type: 3}
+    Eyebrow: {fileID: 2800000, guid: 54af503edb349d94e84d29d3249dd1cc, type: 3}
+    Mouth: {fileID: 2800000, guid: c04a52a346095854fac6dcc0ec1243f6, type: 3}
+    Ear: {fileID: 2800000, guid: f295fba6670ae724ea34f75804f44167, type: 3}
+    Earing: {fileID: 2800000, guid: cf4f4ca5e19c09645b7323289458db9d, type: 3}
+    Nose: {fileID: 2800000, guid: 361a80cf78edaf74eb20de87f06c7e5d, type: 3}
+    Facial: {fileID: 2800000, guid: ad7fd481d2087504ca13f16a3d81d7cc, type: 3}

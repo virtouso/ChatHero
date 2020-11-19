@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 26b6a62b0ccb79249addfb4ccb0cca0c
+  m_SerializeEntries:
+  - m_GUID: 2d82f6a38dd696840bde501fca6b08f9
+    m_Address: Assets/__MainProject/Configuration/Characters/CharactersScriptableObject.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: c93ca631ec0a64843a14918b632f8b33
+    m_Address: Assets/__MainProject/Configuration/Character Parts/CharacterPartsScriptableObject.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 347c9105dee305945928879f69f9337a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 69b4c508eda6de04e83cecdb7cb7b147, type: 2}
+    - {fileID: 11400000, guid: 5e74293367ef8c3439bc41a5849f3287, type: 2}
