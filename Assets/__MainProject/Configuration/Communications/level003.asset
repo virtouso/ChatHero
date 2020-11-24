@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63b15aeb7a1685469b813eb01b26de7, type: 3}
+  m_Name: level003
+  m_EditorClassIdentifier: 
+  PlayerDialogues:
+  - GUID: 4e92d68f-5976-4a9b-af54-93ad05661909
+    IsStartingDialogue: 0
+    PositionInNodeEditor: {x: 616, y: 335}
+  Edges:
+  - BaseNodeGuid: 57476e37-409f-4cd8-bfe5-6228fb7a417e
+    PortName: hay
+    TargetNodeGuid: 4e92d68f-5976-4a9b-af54-93ad05661909
+  - BaseNodeGuid: 4e92d68f-5976-4a9b-af54-93ad05661909
+    PortName: dddd
+    TargetNodeGuid: c29965d7-e9b3-43c2-91c5-a0fb10487d3e
+  - BaseNodeGuid: 4e92d68f-5976-4a9b-af54-93ad05661909
+    PortName: dd
+    TargetNodeGuid: af06792f-369f-4bcb-99f5-48ec1ca8cf98
+  - BaseNodeGuid: 4e92d68f-5976-4a9b-af54-93ad05661909
+    PortName: d
+    TargetNodeGuid: 99f2ab4d-d48b-429a-8f66-700fae7bf44d

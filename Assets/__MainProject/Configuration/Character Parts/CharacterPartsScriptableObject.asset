@@ -14,30 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FaceList:
   - {fileID: 2800000, guid: 4b6ce6880af666448a8184102908d2fb, type: 3}
-  - {fileID: 2800000, guid: 89dae46b8c1350d408f0b7a7edd27584, type: 3}
   ClothingList:
-  - {fileID: 2800000, guid: 3213748176e31af4f84491aafd8fae7b, type: 3}
   - {fileID: 2800000, guid: 6f5578c5b8d621744a7563df3fdfd7a0, type: 3}
-  - {fileID: 2800000, guid: 19f098b87ec3c6f48b8161882eb248b9, type: 3}
+  - {fileID: 2800000, guid: dab48a8e9096f4e41affbae78ccba607, type: 3}
   EyeList:
   - {fileID: 2800000, guid: 095e65cfaf1926c41b6d5bc74054882e, type: 3}
   - {fileID: 2800000, guid: cb67564fb18c05942a963d0ea8dfe05d, type: 3}
+  - {fileID: 2800000, guid: 60b55dfc952aefc4b90f12a9640863b0, type: 3}
+  - {fileID: 2800000, guid: b43d1ef222666e04ca93b2425d05b111, type: 3}
   EyebrowList:
   - {fileID: 2800000, guid: 54af503edb349d94e84d29d3249dd1cc, type: 3}
   - {fileID: 2800000, guid: e7a29f1f3c39d4140903431b846ac9a1, type: 3}
+  - {fileID: 2800000, guid: b3f8cb15aa6f27f40be270b34ece39f8, type: 3}
   MouthList:
   - {fileID: 2800000, guid: c04a52a346095854fac6dcc0ec1243f6, type: 3}
   - {fileID: 2800000, guid: 09222d80c4319244891f7da9efd12696, type: 3}
-  EarList:
-  - {fileID: 2800000, guid: f295fba6670ae724ea34f75804f44167, type: 3}
-  - {fileID: 2800000, guid: 0990e48495e561c4180473e781c94704, type: 3}
-  - {fileID: 2800000, guid: 48fde161f8d69584891a5621131fcf28, type: 3}
-  EaringList:
-  - {fileID: 2800000, guid: cf4f4ca5e19c09645b7323289458db9d, type: 3}
-  - {fileID: 2800000, guid: 9e637f6046b91b846a38c8f19f9a4dcf, type: 3}
+  - {fileID: 2800000, guid: 52179df433ead3f48a512e40956eb145, type: 3}
   NoseList:
   - {fileID: 2800000, guid: 361a80cf78edaf74eb20de87f06c7e5d, type: 3}
   - {fileID: 2800000, guid: 8fd5e1873b9897d4fa160043dd2e858f, type: 3}
+  - {fileID: 2800000, guid: 882cabe642d0c334680af94e4c01bbf2, type: 3}
   FacialList:
   - {fileID: 2800000, guid: ad7fd481d2087504ca13f16a3d81d7cc, type: 3}
   - {fileID: 2800000, guid: e4782a37f12b8db49af8fcc42b2f3f0a, type: 3}

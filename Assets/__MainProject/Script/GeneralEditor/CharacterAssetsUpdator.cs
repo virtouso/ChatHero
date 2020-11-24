@@ -35,8 +35,8 @@ public class CharacterAssetsUpdator : Editor
         _characterPartsReference.EyeList = UpdateCharacterReference("Eye", "ey", "Assets" + _basePartsSubUrl);
         _characterPartsReference.EyebrowList = UpdateCharacterReference("Eyebrow", "eb", "Assets" + _basePartsSubUrl);
         _characterPartsReference.MouthList = UpdateCharacterReference("Mouth", "m", "Assets" + _basePartsSubUrl);
-        _characterPartsReference.EarList = UpdateCharacterReference("Ear", "e", "Assets" + _basePartsSubUrl);
-        _characterPartsReference.EaringList = UpdateCharacterReference("Earing", "er", "Assets" + _basePartsSubUrl);
+       // _characterPartsReference.EarList = UpdateCharacterReference("Ear", "e", "Assets" + _basePartsSubUrl);
+       // _characterPartsReference.EaringList = UpdateCharacterReference("Earing", "er", "Assets" + _basePartsSubUrl);
         _characterPartsReference.NoseList = UpdateCharacterReference("Nose", "n", "Assets" + _basePartsSubUrl);
         _characterPartsReference.FacialList = UpdateCharacterReference("Facial", "fl", "Assets" + _basePartsSubUrl);
 

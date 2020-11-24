@@ -30,25 +30,23 @@ public class CharacterEditorWindow : EditorWindow
 
 
     #region Variable Caches
-    private static string _nameEnglish;
-    private static string _namePersian;
+    private static string _name;
+    // private static string _namePersian;
     private static Color _skinColor;
-    private static int _imageWidth = 128;
-    private static int _imageHeight = 128;
-
+    private static int _imageWidth = 256;
+    private static int _imageHeight = 256;
+    private static Texture2D _finalCharacterImageCache;
     #endregion
 
 
     #region Index Caches
-    private int _currentFaceIndex = 0;
-    private int _currentClothingIndex = 0;
-    private int _currentEyeIndex = 0;
-    private int _currentEyebrowIndex = 0;
-    private int _currentMouthIndex = 0;
-    private int _currentEarIndex = 0;
-    private int _currentEaringIndex = 0;
-    private int _currentNoseIndex = 0;
-    private int _currentFacialIndex = 0;
+    private static int _currentFaceIndex = 0;
+    private static int _currentClothingIndex = 0;
+    private static int _currentEyeIndex = 0;
+    private static int _currentEyebrowIndex = 0;
+    private static int _currentMouthIndex = 0;
+    private static int _currentNoseIndex = 0;
+    private static int _currentFacialIndex = 0;
     #endregion
 
 
@@ -59,7 +57,7 @@ public class CharacterEditorWindow : EditorWindow
     {
         _charactersReference = (CharactersScriptableObject)AssetDatabase.LoadAssetAtPath(_charactersScriptableObjectAddress, typeof(CharactersScriptableObject));
         _characterPartsReference = (CharacterPartsScriptableObject)AssetDatabase.LoadAssetAtPath(_characterPartsScriptableObjectAddress, typeof(CharacterPartsScriptableObject));
-
+        _finalCharacterImageCache = MakeCharacter(MakeFinalCharacterModel(), _imageWidth, _imageHeight, Color.blue);
     }
     private void OnDisable()
     {
@@ -68,23 +66,20 @@ public class CharacterEditorWindow : EditorWindow
     }
 
 
-
     Vector2 VerticalScrollPosition;
     private void OnGUI()
     {
         VerticalScrollPosition = EditorGUILayout.BeginScrollView(VerticalScrollPosition, true, true, GUILayout.Width(position.width), GUILayout.Height(position.height));
         ShowFinalImage();
         ShowNames();
-        ShowEdditingTexture("Face", _characterPartsReference.FaceList, _currentFaceIndex);
+        ShowEdditingTexture("Face", _characterPartsReference.FaceList, _currentFaceIndex, out _currentFaceIndex);
         ShowSkinColor();
-        ShowEdditingTexture("Clothing", _characterPartsReference.ClothingList, _currentClothingIndex);
-        ShowEdditingTexture("Eye", _characterPartsReference.EyeList, _currentEyeIndex);
-        ShowEdditingTexture("Eyebrow", _characterPartsReference.EyebrowList, _currentEyebrowIndex);
-        ShowEdditingTexture("Mouth", _characterPartsReference.MouthList, _currentMouthIndex);
-        ShowEdditingTexture("Ear", _characterPartsReference.EarList, _currentEarIndex);
-        ShowEdditingTexture("Earing", _characterPartsReference.EaringList, _currentEaringIndex);
-        ShowEdditingTexture("Nose", _characterPartsReference.NoseList, _currentNoseIndex);
-        ShowEdditingTexture("Facial", _characterPartsReference.FacialList, _currentFacialIndex);
+        ShowEdditingTexture("Clothing", _characterPartsReference.ClothingList, _currentClothingIndex, out _currentClothingIndex);
+        ShowEdditingTexture("Eye", _characterPartsReference.EyeList, _currentEyeIndex, out _currentEyeIndex);
+        ShowEdditingTexture("Eyebrow", _characterPartsReference.EyebrowList, _currentEyebrowIndex, out _currentEyebrowIndex);
+        ShowEdditingTexture("Mouth", _characterPartsReference.MouthList, _currentMouthIndex, out _currentMouthIndex);
+        ShowEdditingTexture("Nose", _characterPartsReference.NoseList, _currentNoseIndex, out _currentNoseIndex);
+        ShowEdditingTexture("Facial", _characterPartsReference.FacialList, _currentFacialIndex, out _currentFacialIndex);
         ShowModificationButtons();
         ShowCharactersList();
 
@@ -98,33 +93,31 @@ public class CharacterEditorWindow : EditorWindow
     private void ShowFinalImage()
     {
         EditorGUILayout.BeginHorizontal();
+        CharacterModel finalCharacter = MakeFinalCharacterModel();
+        EditorGUILayout.ObjectField("Final Result", _finalCharacterImageCache, typeof(Texture2D));
+        EditorGUILayout.Space();
+        EditorGUILayout.EndHorizontal();
+    }
+
+    private static CharacterModel MakeFinalCharacterModel()
+    {
         CharacterModel finalCharacter = new CharacterModel();
         finalCharacter.Face = _characterPartsReference.FaceList[_currentFaceIndex];
         finalCharacter.Clothing = _characterPartsReference.ClothingList[_currentClothingIndex];
         finalCharacter.Eye = _characterPartsReference.EyeList[_currentEyeIndex];
         finalCharacter.Eyebrow = _characterPartsReference.EyebrowList[_currentEyebrowIndex];
         finalCharacter.Mouth = _characterPartsReference.MouthList[_currentMouthIndex];
-        finalCharacter.Ear = _characterPartsReference.EarList[_currentEarIndex];
-        finalCharacter.Earing = _characterPartsReference.EaringList[_currentEaringIndex];
         finalCharacter.Nose = _characterPartsReference.NoseList[_currentNoseIndex];
         finalCharacter.Facial = _characterPartsReference.FacialList[_currentFacialIndex];
-
-
-        EditorGUILayout.ObjectField("Final Result", MakeCharacter(finalCharacter, _imageWidth, _imageHeight, Color.white), typeof(Texture2D));
-        EditorGUILayout.Space();
-        EditorGUILayout.EndHorizontal();
+        return finalCharacter;
     }
 
     private void ShowNames()
     {
-        EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Name Persian");
-        _namePersian = GUILayout.TextField(_namePersian);
-        EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Name English");
-        _nameEnglish = GUILayout.TextField(_nameEnglish);
+        EditorGUILayout.LabelField("Name");
+        _name = GUILayout.TextField(_name);
         EditorGUILayout.EndHorizontal();
     }
 
@@ -138,19 +131,26 @@ public class CharacterEditorWindow : EditorWindow
         EditorGUILayout.EndHorizontal();
     }
 
-    private static void ShowEdditingTexture(string LabelName, List<Texture2D> editingTexture, int currentIndex)
+    private static void ShowEdditingTexture(string LabelName, List<Texture2D> editingTexture, int currentIndex, out int resultIndex)
     {
+        resultIndex = currentIndex;
         EditorGUILayout.BeginHorizontal();
-
         EditorGUILayout.LabelField(LabelName);
-
-
-
         EditorGUILayout.ObjectField("", editingTexture[currentIndex], typeof(Texture2D));
 
         EditorGUILayout.BeginVertical();
-        if (GUILayout.Button("<")) { ScrollCharacterPart(true, editingTexture, currentIndex); }
-        if (GUILayout.Button(">")) { ScrollCharacterPart(false, editingTexture, currentIndex); }
+        if (GUILayout.Button("<"))
+        {
+            resultIndex = ScrollCharacterPart(true, editingTexture, currentIndex);
+            _finalCharacterImageCache = MakeCharacter(MakeFinalCharacterModel(), _imageWidth, _imageHeight, Color.blue);
+
+        }
+        if (GUILayout.Button(">"))
+        {
+            resultIndex = ScrollCharacterPart(false, editingTexture, currentIndex);
+            _finalCharacterImageCache = MakeCharacter(MakeFinalCharacterModel(), _imageWidth, _imageHeight, Color.blue);
+
+        }
         EditorGUILayout.EndVertical();
 
         EditorGUILayout.EndHorizontal();
@@ -180,9 +180,8 @@ public class CharacterEditorWindow : EditorWindow
 
             EditorGUILayout.LabelField((i + 1).ToString());
 
-            EditorGUILayout.LabelField(_charactersReference.Characters[i].NameEnglish);
-            EditorGUILayout.LabelField(_charactersReference.Characters[i].NamePersian);
-            EditorGUILayout.ObjectField("", MakeCharacter(_charactersReference.Characters[i], _imageWidth, _imageHeight, Color.white), typeof(Texture2D));
+            EditorGUILayout.LabelField(_charactersReference.Characters[i].Name);
+            //  EditorGUILayout.ObjectField("", MakeCharacter(_charactersReference.Characters[i], _imageWidth, _imageHeight, Color.white), typeof(Texture2D));
             EditorGUILayout.EndHorizontal();
         }
     }
@@ -192,7 +191,7 @@ public class CharacterEditorWindow : EditorWindow
 
     private void ModifySelectedCharacter()
     {
-        if (!_charactersReference.Characters.Any(x => x.NameEnglish == _nameEnglish))
+        if (!_charactersReference.Characters.Any(x => x.Name == _name))
         {
 
             EditorUtility.DisplayDialog("error", "there is no character with this name", "OK");
@@ -200,16 +199,15 @@ public class CharacterEditorWindow : EditorWindow
 
         }
 
-        CharacterModel selectedCharacter = _charactersReference.Characters.First(x => x.NameEnglish == _nameEnglish);
-        selectedCharacter.NamePersian = _namePersian;
+        CharacterModel selectedCharacter = _charactersReference.Characters.First(x => x.Name == _name);
         selectedCharacter.Face = _characterPartsReference.FaceList[_currentFaceIndex];
         selectedCharacter.FaceColor = _skinColor;
         selectedCharacter.Clothing = _characterPartsReference.ClothingList[_currentClothingIndex];
         selectedCharacter.Eye = _characterPartsReference.EyeList[_currentEyeIndex];
         selectedCharacter.Eyebrow = _characterPartsReference.EyebrowList[_currentEyebrowIndex];
         selectedCharacter.Mouth = _characterPartsReference.MouthList[_currentMouthIndex];
-        selectedCharacter.Ear = _characterPartsReference.EarList[_currentEarIndex];
-        selectedCharacter.Earing = _characterPartsReference.EaringList[_currentEaringIndex];
+        //   selectedCharacter.Ear = _characterPartsReference.EarList[_currentEarIndex];
+        //  selectedCharacter.Earing = _characterPartsReference.EaringList[_currentEaringIndex];
         selectedCharacter.Nose = _characterPartsReference.NoseList[_currentNoseIndex];
         selectedCharacter.Facial = _characterPartsReference.FacialList[_currentFacialIndex];
 
@@ -220,7 +218,7 @@ public class CharacterEditorWindow : EditorWindow
 
     private void AddNewCharacter()
     {
-        if (_charactersReference.Characters.Any(x => x.NameEnglish == _nameEnglish) || _charactersReference.Characters.Any(x => x.NamePersian == _namePersian))
+        if (_charactersReference.Characters.Any(x => x.Name == _name))
         {
 
             EditorUtility.DisplayDialog("error", "Character Name Already Exist", "OK");
@@ -229,16 +227,15 @@ public class CharacterEditorWindow : EditorWindow
 
         CharacterModel newCharacter = new CharacterModel();
 
-        newCharacter.NamePersian = _namePersian;
-        newCharacter.NameEnglish = _nameEnglish;
+        newCharacter.Name = _name;
         newCharacter.Face = _characterPartsReference.FaceList[_currentFaceIndex];
         newCharacter.FaceColor = _skinColor;
         newCharacter.Clothing = _characterPartsReference.ClothingList[_currentClothingIndex];
         newCharacter.Eye = _characterPartsReference.EyeList[_currentEyeIndex];
         newCharacter.Eyebrow = _characterPartsReference.EyebrowList[_currentEyebrowIndex];
         newCharacter.Mouth = _characterPartsReference.MouthList[_currentMouthIndex];
-        newCharacter.Ear = _characterPartsReference.EarList[_currentEarIndex];
-        newCharacter.Earing = _characterPartsReference.EaringList[_currentEaringIndex];
+        // newCharacter.Ear = _characterPartsReference.EarList[_currentEarIndex];
+        // newCharacter.Earing = _characterPartsReference.EaringList[_currentEaringIndex];
         newCharacter.Nose = _characterPartsReference.NoseList[_currentNoseIndex];
         newCharacter.Facial = _characterPartsReference.FacialList[_currentFacialIndex];
 
@@ -248,12 +245,14 @@ public class CharacterEditorWindow : EditorWindow
         AssetDatabase.SaveAssets();
     }
 
-    private static void ScrollCharacterPart(bool additiveScroll, List<Texture2D> scrollingList, int currentIndex)
+    private static int ScrollCharacterPart(bool additiveScroll, List<Texture2D> scrollingList, int currentIndex)
     {
+        UnityEngine.Debug.Log("Button Pressed");
+
         if (additiveScroll)
         {
 
-            if (currentIndex < scrollingList.Count - 2) { currentIndex++; }
+            if (currentIndex < scrollingList.Count - 1) { currentIndex++; }
             else { currentIndex = 0; }
 
         }
@@ -263,7 +262,7 @@ public class CharacterEditorWindow : EditorWindow
             else { currentIndex = scrollingList.Count - 1; }
         }
 
-
+        return currentIndex;
     }
 
     private static Texture2D MakeCharacter(CharacterModel inputCharacter, int goalWidth, int goalHeight, Color backgroundColor)
@@ -280,23 +279,17 @@ public class CharacterEditorWindow : EditorWindow
 
                 Color pixelColor = inputCharacter.Face.GetPixel(i, j);
                 if (pixelColor.a > 0)
-                    finalTexture.SetPixel(i, j, pixelColor + _skinColor);
+                    finalTexture.SetPixel(i, j, pixelColor * _skinColor);
 
                 pixelColor = inputCharacter.Clothing.GetPixel(i, j);
                 if (pixelColor.a > 0)
                     finalTexture.SetPixel(i, j, pixelColor);
 
-                pixelColor = inputCharacter.Ear.GetPixel(i, j);
-                if (pixelColor.a > 0)
-                    finalTexture.SetPixel(i, j, pixelColor + pixelColor);
 
-                pixelColor = inputCharacter.Earing.GetPixel(i, j);
-                if (pixelColor.a > 0)
-                    finalTexture.SetPixel(i, j, pixelColor);
 
                 pixelColor = inputCharacter.Nose.GetPixel(i, j);
                 if (pixelColor.a > 0)
-                    finalTexture.SetPixel(i, j, pixelColor + pixelColor);
+                    finalTexture.SetPixel(i, j, pixelColor * _skinColor);
 
                 pixelColor = inputCharacter.Mouth.GetPixel(i, j);
                 if (pixelColor.a > 0)
@@ -314,9 +307,10 @@ public class CharacterEditorWindow : EditorWindow
                 pixelColor = inputCharacter.Facial.GetPixel(i, j);
                 if (pixelColor.a > 0)
                     finalTexture.SetPixel(i, j, pixelColor);
-
+                //  finalTexture.SetPixel(i, j, Color.red);
             }
         }
+        finalTexture.Apply();
 
 
         return finalTexture;

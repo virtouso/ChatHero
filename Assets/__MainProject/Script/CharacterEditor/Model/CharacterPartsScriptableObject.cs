@@ -12,8 +12,8 @@ public class CharacterPartsScriptableObject : ScriptableObject
     public List<Texture2D> EyeList;
     public List<Texture2D> EyebrowList;
     public List<Texture2D> MouthList;
-    public List<Texture2D> EarList;
-    public List<Texture2D> EaringList;
+ //   public List<Texture2D> EarList;
+  //  public List<Texture2D> EaringList;
     public List<Texture2D> NoseList;
     public List<Texture2D> FacialList;
 
