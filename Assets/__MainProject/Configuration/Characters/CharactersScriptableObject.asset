@@ -31,3 +31,12 @@ MonoBehaviour:
     Mouth: {fileID: 2800000, guid: c04a52a346095854fac6dcc0ec1243f6, type: 3}
     Nose: {fileID: 2800000, guid: 882cabe642d0c334680af94e4c01bbf2, type: 3}
     Facial: {fileID: 2800000, guid: ad7fd481d2087504ca13f16a3d81d7cc, type: 3}
+  - Name: Moeen
+    Face: {fileID: 2800000, guid: 4b6ce6880af666448a8184102908d2fb, type: 3}
+    FaceColor: {r: 0.8679245, g: 0.6509434, b: 0.6509434, a: 0}
+    Clothing: {fileID: 2800000, guid: 6f5578c5b8d621744a7563df3fdfd7a0, type: 3}
+    Eye: {fileID: 2800000, guid: cb67564fb18c05942a963d0ea8dfe05d, type: 3}
+    Eyebrow: {fileID: 2800000, guid: 54af503edb349d94e84d29d3249dd1cc, type: 3}
+    Mouth: {fileID: 2800000, guid: 52179df433ead3f48a512e40956eb145, type: 3}
+    Nose: {fileID: 2800000, guid: 882cabe642d0c334680af94e4c01bbf2, type: 3}
+    Facial: {fileID: 2800000, guid: e4782a37f12b8db49af8fcc42b2f3f0a, type: 3}

@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63b15aeb7a1685469b813eb01b26de7, type: 3}
+  m_Name: level1
+  m_EditorClassIdentifier: 
+  PlayerDialogues:
+  - GUID: cc52f499-c37d-4461-a447-d981e2f0e06f
+    IsStartingDialogue: 0
+    PositionInNodeEditor: {x: 475, y: 229}
+  - GUID: 9206e495-370c-48e9-81b5-68a6715e66f6
+    IsStartingDialogue: 0
+    PositionInNodeEditor: {x: 1432, y: 394}
+  CharacterDialogues:
+  - GUID: 8106251d-52b4-4098-a4a2-e036ab73371a
+    IsStartingDialogue: 1
+    PositionInNodeEditor: {x: 89, y: 313}
+    Dialogue: Hay James
+    UserScore: 0
+    CharacterName: Moeen
+  - GUID: 897902c9-36f0-4c7e-aab3-d456c9eeb51b
+    IsStartingDialogue: 0
+    PositionInNodeEditor: {x: 939, y: 146}
+    Dialogue: 'Ok! Bye. '
+    UserScore: 1
+    CharacterName: Moeen
+  - GUID: af6f1f6e-13f4-4119-98c9-daa967db224b
+    IsStartingDialogue: 0
+    PositionInNodeEditor: {x: 952, y: 318}
+    Dialogue: Do You have Weed?
+    UserScore: 0
+    CharacterName: Moeen
+  - GUID: 1d61d57f-20ad-4791-83c4-ea10b6a48a63
+    IsStartingDialogue: 0
+    PositionInNodeEditor: {x: 2058, y: 311}
+    Dialogue: Oh No!
+    UserScore: 2
+    CharacterName: Moeen
+  - GUID: ce890c5b-31be-4b01-af09-ad2c17632626
+    IsStartingDialogue: 0
+    PositionInNodeEditor: {x: 2120, y: 545}
+    Dialogue: OK! Good
+    UserScore: 3
+    CharacterName: Moeen
+  Edges:
+  - BaseNodeGuid: 8106251d-52b4-4098-a4a2-e036ab73371a
+    PortName: Hay James
+    TargetNodeGuid: cc52f499-c37d-4461-a447-d981e2f0e06f
+  - BaseNodeGuid: cc52f499-c37d-4461-a447-d981e2f0e06f
+    PortName: I'm Not James
+    TargetNodeGuid: 897902c9-36f0-4c7e-aab3-d456c9eeb51b
+  - BaseNodeGuid: cc52f499-c37d-4461-a447-d981e2f0e06f
+    PortName: Hay How Are You?
+    TargetNodeGuid: af6f1f6e-13f4-4119-98c9-daa967db224b
+  - BaseNodeGuid: af6f1f6e-13f4-4119-98c9-daa967db224b
+    PortName: Do You have Weed?
+    TargetNodeGuid: 9206e495-370c-48e9-81b5-68a6715e66f6
+  - BaseNodeGuid: 9206e495-370c-48e9-81b5-68a6715e66f6
+    PortName: i will call the police
+    TargetNodeGuid: 1d61d57f-20ad-4791-83c4-ea10b6a48a63
+  - BaseNodeGuid: 9206e495-370c-48e9-81b5-68a6715e66f6
+    PortName: yes. come to the address i send
+    TargetNodeGuid: ce890c5b-31be-4b01-af09-ad2c17632626

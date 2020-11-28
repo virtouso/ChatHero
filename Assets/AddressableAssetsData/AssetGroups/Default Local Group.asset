@@ -17,6 +17,12 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 26b6a62b0ccb79249addfb4ccb0cca0c
   m_SerializeEntries:
+  - m_GUID: 1b267239641b17140993e119ac9ce2ce
+    m_Address: Assets/__MainProject/Configuration/AssetReferences/BaseMenuItemsReferencesScriptableObject.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 2d82f6a38dd696840bde501fca6b08f9
     m_Address: Assets/__MainProject/Configuration/Characters/CharactersScriptableObject.asset
     m_ReadOnly: 0
@@ -25,6 +31,12 @@ MonoBehaviour:
     m_TargetAsset: {fileID: 0}
   - m_GUID: c93ca631ec0a64843a14918b632f8b33
     m_Address: Assets/__MainProject/Configuration/Character Parts/CharacterPartsScriptableObject.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: e31d8ba3a81749543a08e7f38e6c7349
+    m_Address: Assets/__MainProject/Configuration/Communications/LevelsReferencesScriptableObject.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
